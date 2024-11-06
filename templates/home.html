@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">Swiftfolio</div>
+        <div class="user-icon">
+            {% if session.get('username') %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="{{ url_for('profile') }}" class="profile-link">Profile</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="portfolio-options">
+        <h1>Select Your Portfolio</h1>
+        <div class="button-grid">
+            <button><a href="{{ url_for('portfolio', portfolio_id=1) }}">Portfolio 1</a></button>
+            <button><a href="{{ url_for('portfolio', portfolio_id=2) }}">Portfolio 2</a></button>
+            <button><a href="{{ url_for('portfolio', portfolio_id=3) }}">Portfolio 3</a></button>
+            <button><a href="{{ url_for('portfolio', portfolio_id=4) }}">Portfolio 4</a></button>
+            <button><a href="{{ url_for('portfolio', portfolio_id=5) }}">Portfolio 5</a></button>
+        </div>
+        
+    </div>
+</body>
+</html>

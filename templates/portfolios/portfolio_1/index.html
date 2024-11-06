@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/static/css/portfolio_1_style.css" />
+    <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container container">
+                <div>
+                    <h1 class="navbar-brand">{{ user_data.full_name }}</h1>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Skills</a></li>
+                    <li><a href="#my-works">Portfolio</a></li>
+                    <li><a href="#contact-me">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="home-content" id="home-page">
+            <div class="name">
+                <h1>Hi, I'm {{user_data.first_name}}</h1>
+                <p>A {{ user_data.job_title }} in training.</p>
+            </div>
+            <div class="angle-down-icon">
+                <a href="#about"><i class="fas fa-angle-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-me" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="left-content">
+                    <h1 class="about-heading">About Me</h1>
+                    <img src="{{user_data.profile_image}}" alt="Profile Image" />
+                    <p>
+                        {{ user_data.summary }}
+                    </p>
+                </div>
+                <div class="right-content">
+                    <h1 class="skills-heading">My Skills</h1>
+                    <div class="skills-bar">
+                        <div class="skills-container">
+                            {% for skill in user_data.skills %}
+                            <div class="skill-card">
+                                <h3>{{ skill.name }}</h3>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: {{ skill.proficiency }}%;"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="my-works">
+        <div class="portfolio">
+            <h1>Projects</h1>
+            <div class="portfolio-content container">
+                <div class="projects-container">
+                    {% for project in user_data.projects %}
+                    <div class="project-card">
+                        <img src="{{ project.image }}" alt="{{ project.name }}" class="project-image">
+                        <h3>{{ project.name }}</h3>
+                        <p>{{ project.description }}</p>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact" id="contact-me">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Get in touch with me: <i class="fas fa-arrow-right"></i> {{user_data.email}}</p>
+            <p>Or find me on:</p>
+            <a href="{{ user_data.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="{{ user_data.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; {{ current_year }} {{ user_data.full_name }}. All Rights Reserved.</p>
+        
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="/static/js/portfolio_1_script.js"></script>
+</body>
+</html>

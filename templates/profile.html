@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <script src="{{ url_for('static', filename='profile.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Profile</h1>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </header>
+    
+    <form method="POST" enctype="multipart/form-data">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" 
+            value="{{ user_data.full_name }}" 
+            placeholder="Enter your full name" required>
+        
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" 
+            value="{{ user_data.first_name }}" 
+            placeholder="Enter your first name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" 
+            value="{{ user_data.email }}" 
+            placeholder="Enter your email" required>
+        
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" 
+            value="{{ user_data.phone_number }}" 
+            placeholder="Enter your phone number" pattern="[0-9]{10}">
+
+        <label for="profile_image">Profile Image:</label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/*">
+        {% if user_data.profile_image %}
+            <img src="{{ url_for('static', filename=user_data.profile_image) }}" alt="Profile Image" style="width: 100px; height: auto;">
+        {% endif %}
+        
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" name="job_title" 
+            value="{{ user_data.job_title }}" 
+            placeholder="Enter your job title">
+        
+        <label for="summary">Summary:</label>
+        <textarea id="summary" name="summary" 
+            placeholder="Write a brief summary about yourself">{{ user_data.summary }}</textarea>
+
+        <input type="hidden" id="skills" name="skills">
+        <input type="hidden" id="projects" name="projects">
+
+        <h2>Skills:</h2>
+        <div id="skillsContainer">
+            {% for skill in user_data.skills %}
+            <div class="skill-card">
+                <h3>{{ skill.name }}</h3>
+                <p>Proficiency: {{ skill.proficiency }}%</p>
+                <button type="button" onclick="editSkill('{{ skill.name }}', {{ skill.proficiency }})">Edit</button>
+                <button type="button" onclick="removeSkill(this)">Delete</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="add-new-card" onclick="addSkill()">
+            <h3>Add New Skill</h3>
+        </div>
+
+        <h2>Projects:</h2>
+        <div id="projectsContainer">
+            {% for project in user_data.projects %}
+            <div class="project-card">
+                <h3>{{ project.name }}</h3>
+                <p>Description: {{ project.description }}</p>
+                {% if project.image %}
+                <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.name }}" style="width: 100px; height: auto;">
+                {% endif %}
+                <button type="button" onclick="editProject('{{ project.name }}', '{{ project.description }}')">Edit</button>
+                <button type="button" onclick="removeProject(this)">Delete</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="add-new-card" onclick="addProject()">
+            <h3>Add New Project</h3>
+        </div>
+
+        <label for="linkedin">LinkedIn:</label>
+        <input type="url" id="linkedin" name="linkedin" 
+            value="{{ user_data.linkedin }}" 
+            placeholder="Enter your LinkedIn URL">
+        
+        <label for="github">GitHub:</label>
+        <input type="url" id="github" name="github" 
+            value="{{ user_data.github }}" 
+            placeholder="Enter your GitHub URL">
+        
+        <button type="submit">Save Changes</button>
+    </form>
+    
+    <footer>
+        <p>&copy; 2024 Swiftfolio</p>
+    </footer>
+</body>
+</html>

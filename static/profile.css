@@ -1,0 +1,176 @@
+body {
+  background-color: #0f0f0f;
+  color: #ddd;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  height: 75px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+h1 {
+  color: #ff4081;
+}
+
+form {
+  background-color: #1f1f1f;
+  padding: 30px; /* Reduced padding for a more compact form */
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  margin: 20px auto; /* Center the form */
+  max-width: 600px;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+  color: #bbb;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 10px; /* Standardized padding */
+  margin-top: 5px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: #ddd;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.proficiency-input {
+  width: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #ddd;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.proficiency-input:hover,
+.proficiency-input:focus {
+  border-color: #ff4081;
+}
+
+.skill-card,
+.project-card,
+.skill-input,
+.project-input,
+.add-new-card {
+  border: 1px solid #444; /* Unified border color */
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #2a2a2a; /* Consistent background color */
+}
+
+.add-new-card {
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff4081;
+}
+
+.add-new-card:hover {
+  background-color: #444; /* Darkened on hover */
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #ff5c93;
+  transform: translateY(-2px);
+}
+
+footer {
+  background-color: #1f1f1f;
+  color: #bbb;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0;
+}
+
+.skill-input, .project-input {
+  margin-bottom: 10px;
+}
+
+button[type="button"] {
+  background-color: #e74c3c;
+}
+
+button[type="button"]:hover {
+  background-color: #c0392b;
+}
+
+input[type="file"] {
+  border: 1px solid #444;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #ddd;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #ff5c93;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.skill-card, .project-card {
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}

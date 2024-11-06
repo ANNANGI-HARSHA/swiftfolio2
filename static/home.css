@@ -1,0 +1,87 @@
+/* General Page Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #0f0f0f;
+  color: #ddd;
+  background-image: url(https://e0.pxfuel.com/wallpapers/846/344/desktop-wallpaper-portfolio-thumbnail.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: justify;
+  color: whitesmoke;
+}
+
+/* Header Styling */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #1b1b1b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #ff4081;
+}
+
+.user-icon {
+  font-size: 1em;
+}
+
+.user-icon a {
+  color: #ddd;
+  margin-left: 15px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.user-icon a:hover {
+  color: #ff4081;
+}
+
+/* Portfolio Options Styling */
+.portfolio-options {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.portfolio-options h1 {
+  font-size: 2em;
+  color: #ff4081;
+}
+
+/* Button Grid for Portfolio Links */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.button-grid button {
+  padding: 15px;
+  font-size: 1.1em;
+  background-color: #333;
+  color: #ff4081;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.button-grid button:hover {
+  background-color: #ff4081;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.button-grid button a {
+  color: inherit;
+  text-decoration: none;
+}

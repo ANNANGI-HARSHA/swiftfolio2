@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/static/css/portfolio_4_style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" /> 
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">{{ user_data.full_name }}</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Skills</a></li>
+          <li><a href="#projects">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">{{ user_data.full_name }}</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Portfolio</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="{{user_data.profile_image}}" alt="John Doe profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">{{ user_data.full_name }}</h1>
+        <p class="section__text__p2">{{ user_data.job_title }}</p>
+        <div class="btn-container">
+           
+          <!--
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button> -->
+        </div>
+        <div id="socials-container">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyL1Rb6y8mUVGXzP4Q6VAE6rkKbu2ALp5wrg&s"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://linkedin.com/'"
+          />
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-github-logo-icon-download-in-svg-png-gif-file-formats--application-productivity-apps-pack-logos-icons-8630395.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="{{user_data.profile_image}}"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="https://icons.veryicon.com/png/o/miscellaneous/zr_icon/work-experience-2.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>1+ year <br />{{ user_data.job_title }}</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="https://icons.veryicon.com/png/o/miscellaneous/zr_icon/professional.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Profession</h3>
+              <p>Software </p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+                {{ user_data.summary }}
+
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Skills</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Technologies</h2>
+            <div class="article-container">
+                {% for skill in user_data.skills %}
+                <div class="skill-card">
+                    <h3>{{ skill.name }}</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: {{ skill.proficiency }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+          
+          
+          
+        </div>
+      </div> 
+      
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            {% for project in user_data.projects %}
+            <div class="project-card">
+                <img src="{{ project.image }}" alt="{{ project.name }}" class="project-image">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnmmjJjBq_5oZ6Hb9iRVyA5O-wX8bmOI2cqg&s"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="{{ user_data.email }}">{{user_data.email}}</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="{{ user_data.linkedin }}">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+     
+      <p>Copyright &#169; {{ user_data.full_name }}. All Rights Reserved.</p>
+    </footer>
+    <script src="/static/js/portfolio_4_script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user_data.job_title }} Portfolio</title>
+    <link rel="stylesheet" href="/static/css/portfolio_2_style.css">
+<script src="{{ url_for('static', filename='portfolios/portfolio_2/js/script.js') }}" defer></script>
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">{{ user_data.full_name }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ user_data.linkedin }}">LinkedIn</a></li>
+                    <li><a href="{{ user_data.github }}">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="profile"><!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <title>My Portfolio</title>
+            <meta name="description" content="Portfolio Template for Developer" />
+        
+            <link rel="stylesheet" href="css/style.css" />
+        
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+              rel="stylesheet"
+            />
+          </head>
+          <body>
+            <header class="header"> 
+              <div class="header__content">
+                <div class="header__logo-container">
+                  <div class="header__logo-img-cont">
+                    <img
+                      src="{{user_data.profile_image}}"
+                      alt=" Logo Image"
+                      class="header__logo-img"
+                    />
+                  </div>
+                  <span class="header__logo-sub">{{ user_data.full_name }}</span>
+                </div>
+                <div class="header__main">
+                  <ul class="header__links">
+                    <li class="header__link-wrapper">
+                      <a href="#" class="header__link"> Home </a>
+                    </li>
+                    <li class="header__link-wrapper">
+                      <a href="#about" class="header__link">About </a>
+                    </li>
+                    <li class="header__link-wrapper">
+                      <a href="#projects" class="header__link">
+                        Projects
+                      </a>
+                    </li>
+                    <li class="header__link-wrapper">
+                      <a href="#contact" class="header__link"> Contact </a>
+                    </li>
+                  </ul>
+                  <div class="header__main-ham-menu-cont">
+                    <img
+                      src="./assets/svg/ham-menu.svg"
+                      alt="hamburger menu"
+                      class="header__main-ham-menu"
+                    />
+                    <img
+                      src="./assets/svg/ham-menu-close.svg"
+                      alt="hamburger menu close"
+                      class="header__main-ham-menu-close d-none"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="header__sm-menu">
+                <div class="header__sm-menu-content">
+                  <ul class="header__sm-menu-links">
+                    <li class="header__sm-menu-link">
+                      <a href="./index.html"> Home </a>
+                    </li>
+        
+                    <li class="header__sm-menu-link">
+                      <a href="./index.html#about"> About </a>
+                    </li>
+        
+                    <li class="header__sm-menu-link">
+                      <a href="./index.html#projects"> Projects </a>
+                    </li>
+        
+                    <li class="header__sm-menu-link">
+                      <a href="./index.html#contact"> Contact </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </header>
+            <section class="home-hero">
+              <div class="home-hero__content">
+                <h1 class="heading-primary">Hey, My name is {{ user_data.full_name }}</h1>
+                <div class="home-hero__info">
+                  <p class="text-primary">
+                    {{ user_data.summary }}
+                  </p>
+                </div>
+               
+              </div>
+              <div class="home-hero__socials">
+                <div class="home-hero__social">
+                  <a href="#" class="home-hero__social-icon-link">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                      alt="icon"
+                      class="home-hero__social-icon"
+                    />
+                  </a>
+                </div>
+                <div class="home-hero__social">
+                  <a href="#" class="home-hero__social-icon-link">
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-256/free-github-logo-icon-download-in-svg-png-gif-file-formats--application-productivity-apps-pack-logos-icons-8630395.png"
+                      alt="icon"
+                      class="home-hero__social-icon"
+                    />
+                  </a>
+                </div>
+               
+              
+                
+              </div>
+              <div class="home-hero__mouse-scroll-cont">
+                <div class="mouse"></div>
+              </div>
+            </section>
+        
+            <section id="about" class="about sec-pad">
+              <div class="main-container">
+                <h2 class="heading heading-sec heading-sec__mb-med">
+                  <span class="heading-sec__main">About Me</span>
+                  <span class="heading-sec__sub">
+                    
+                  </span>
+                </h2>
+                <div class="about__content">
+                  <div class="about__content-main">
+                    <h3 class="about__content-title">Get to know me!</h3>
+                    <div class="about__content-details">
+                      <p class="about__content-details-para">
+                        {{ user_data.summary }}
+                      </p>
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="about__content-skills">
+                    <h3 class="about__content-title">My Skills</h3>
+                    {% for skill in user_data.skills %}
+                    <div class="skill-card">
+                        <h3>{{ skill.name }}</h3>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: {{ skill.proficiency }}%;"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="projects" class="projects sec-pad">
+              <div class="main-container">
+                <h2 class="heading heading-sec heading-sec__mb-bg">
+                  <span class="heading-sec__main">Projects</span>
+                  <span class="heading-sec__sub">
+                    Some of my Frontend project ideas are :-  
+                  </span>
+                </h2>
+        
+                {% for project in user_data.projects %}
+                <div class="project-card">
+                    <img src="{{ project.image }}" alt="{{ project.name }}" class="project-image">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description }}</p>
+                    
+                </div>
+                {% endfor %}
+               </div>
+            </section>
+            <section id="contact" class="contact sec-pad dynamicBg">
+              <div class="main-container">
+                <h2 class="heading heading-sec heading-sec__mb-med">
+                  <span class="heading-sec__main heading-sec__main--lt">Contact</span>
+                  <span class="heading-sec__sub heading-sec__sub--lt">
+                   
+                  </span>
+                </h2>
+                <div class="contact__form-container">
+                  <form action="#" class="contact__form">
+                    <div class="contact__form-field">
+                      <label class="contact__form-label" for="name">Name</label>
+                      <input
+                        required
+                        placeholder="Enter Your Name"
+                        type="text"
+                        class="contact__form-input"
+                        name="name"
+                        id="name"
+                      />
+                    </div>
+                    <div class="contact__form-field">
+                      <label class="contact__form-label" for="email">Email</label>
+                      <input
+                        required
+                        placeholder="Enter Your Email"
+                        type="text"
+                        class="contact__form-input"
+                        name="email"
+                        id="email"
+                      />
+                    </div>
+                    <div class="contact__form-field">
+                      <label class="contact__form-label" for="message">Message</label>
+                      <textarea
+                        required
+                        cols="30"
+                        rows="10"
+                        class="contact__form-input"
+                        placeholder="Enter Your Message"
+                        name="message"
+                        id="message"
+                      ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--theme contact__btn">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </section>
+            <footer class="main-footer">
+              <div class="main-container">
+                <div class="main-footer__upper">
+                  <div class="main-footer__row main-footer__row-1">
+                    <h2 class="heading heading-sm main-footer__heading-sm">
+                      <span>Social</span>
+                    </h2>
+                    <div class="main-footer__social-cont">
+                      <a target="_blank" rel="noreferrer" href="#">
+                        <img
+                          class="main-footer__icon"
+                          src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                          alt="icon"
+                        />
+                      </a>
+                      <a target="_blank" rel="noreferrer" href="#">
+                        <img
+                          class="main-footer__icon"
+                          src="https://cdn.iconscout.com/icon/free/png-256/free-github-logo-icon-download-in-svg-png-gif-file-formats--application-productivity-apps-pack-logos-icons-8630395.png"
+                          alt="icon"
+                        />
+                      </a>
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+        
+                <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
+                <div class="main-footer__lower">
+                  &copy; Copyright 2024. Made by
+                  <a rel="noreferrer" target="_blank" href="#"
+                    >{{ user_data.full_name }}</a
+                  >
+                </div>
+              </div>
+            </footer>
+        
+            <script src="/static/js/portfolio_2_script.js"></script>
+          </body>
+        </html>
+        
+    </section>
+
+</body>
+</html>
